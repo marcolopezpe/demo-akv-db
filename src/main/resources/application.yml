@@ -1,0 +1,29 @@
+app:
+  config:
+    origin: azure # azure|vars
+    username-text: ${app.config.datasource.username}
+    password-text: ${app.config.datasource.password}
+    azure:
+      key-vault-name: ${app.config.azure.key.vault.name}
+      client-id: ${app.config.azure.client.id}
+      client-secret: ${app.config.azure.client.secret}
+      tenant-id: ${app.config.azure.tenant.id}
+      secret-user: ${app.config.azure.secret.user}
+      secret-pass: ${app.config.azure.secret.pass}
+quarkus:
+  devservices:
+    enabled: false
+  datasource:
+    db-kind: other
+    credentials-provider: credentials-provider-config
+    credentials-provider-name: credentials-provider-config
+    jdbc:
+      url: jdbc:postgresql://marcolopez.pe:15432/demo-akv-db
+      driver: org.postgresql.Driver
+  hibernate-orm:
+    log:
+      sql: true
+      format-sql: true
+    database:
+      generation: none
+    dialect: org.hibernate.dialect.PostgreSQLDialect
